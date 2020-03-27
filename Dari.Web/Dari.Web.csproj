@@ -196,6 +196,8 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AnnoceController.cs" />
+    <Compile Include="Controllers\ClientController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Global.asax.cs">
@@ -371,9 +373,16 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Shared\_CustomIndex.cshtml" />
+    <Content Include="Views\Client\Create.cshtml" />
+    <Content Include="Views\Annoce\Index.cshtml" />
+    <Content Include="Views\Annoce\Edit.cshtml" />
+    <Content Include="Views\Annoce\Delete.cshtml" />
+    <Content Include="Views\Annoce\Create1.cshtml" />
+    <Content Include="Views\Annoce\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Content\upload\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -382,6 +391,20 @@
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Dari.Data\Dari.Data.csproj">
+      <Project>{A4CF5D64-BBCC-435F-AF40-48FEAF93E9D4}</Project>
+      <Name>Dari.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Dari.Domain\Dari.Domain.csproj">
+      <Project>{1554cb1b-be65-4b19-be85-7b97c2c5cbe0}</Project>
+      <Name>Dari.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Dari.Service\Dari.Service.csproj">
+      <Project>{b0d8a1a0-8d8f-4875-82f3-705668bdf573}</Project>
+      <Name>Dari.Service</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -1,0 +1,59 @@
+﻿@model IEnumerable<Dari.Domain.Entities.Annonce>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.address)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.surface)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.chambres)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.images)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Description)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.address)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.surface)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.chambres)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.images)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.AnnonceId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.AnnonceId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.AnnonceId })
+        </td>
+    </tr>
+}
+
+</table>
