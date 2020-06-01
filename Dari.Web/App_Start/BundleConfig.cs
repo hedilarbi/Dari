@@ -39,7 +39,9 @@ namespace Dari.Web
                         "~/Scripts/main.js"));
 
             bundles.Add(new StyleBundle("~/template/css").Include(
-                     "~/Content/css/bootstrap.min.css",
+                     "~/Content/css/bootstrap.min.css", 
+                     
+
                      "~/Content/css/font-awesome.min.css",
                      "~/Content/css/elegant-icons.css",
                      "~/Content/css/themify-icons.css",

@@ -2,11 +2,35 @@
 
 @{
     ViewBag.Title = "Index";
-    Layout = "~/Views/Shared/_Layout.cshtml";
-
+   
 }
 
 <h2>Index</h2>
+@using (Html.BeginForm())
+{
+<form asp-controller="Annonce" asp-action="Index" method="get">
+        <div class="bt-item">
+                                            <input type="radio" name="type" value="C" id="st-all" checked>
+                                            <label for="st-all">All</label>
+                                        </div>
+                                        <div class="bt-item">
+                                            <input type="radio" name="type" value="A" id="st-buy">
+                                            <label for="st-buy">Buy</label>
+                                        </div>
+                                        <div class="bt-item">
+                                            <input type="radio" name="type" value="B" id="st-rent">
+                                            <label for="st-rent">Rent</label> </div>
+          <div class="bt-item">
+              Addresse: <input type="text" name="filtre" />   
+          </div>
+                                            <div class="bt-item">
+                                                min price : <input type="text" name="min" />
+                                                max price : <input type="text" name="max" />
+                                                </div>
+                                                <input type="submit" value="Filter" />
+
+</form>
+}
 
 <p>
     @Html.ActionLink("Create New", "Create")
@@ -23,10 +47,16 @@
             @Html.DisplayNameFor(model => model.surface)
         </th>
         <th>
+            @Html.DisplayNameFor(model => model.price)
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.chambres)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.images)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TypeAn)
         </th>
         <th></th>
     </tr>
@@ -43,10 +73,16 @@
             @Html.DisplayFor(modelItem => item.surface)
         </td>
         <td>
+            @Html.DisplayFor(modelItem => item.price)
+        </td>
+        <td>
             @Html.DisplayFor(modelItem => item.chambres)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.images)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TypeAn)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.AnnonceId }) |

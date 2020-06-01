@@ -18,6 +18,7 @@ namespace Dari.Domain.Entities
         public string Description { get; set; }
         public string address { get; set; }
         public float surface { get; set; }
+        public float price { get; set; }
         public int chambres { get; set; }
     
         public string images { get; set; }

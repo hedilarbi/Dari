@@ -24,9 +24,144 @@ namespace Dari.Web.Controllers
             ServiceClient = new Service<Client>(uow);
         }
         // GET: Annoce
-        public ActionResult Index()
+        public ActionResult Index(string filtre , string min , string max , string type)
         {
-            return View(ServiceAnnonce.GetAll());
+            var list = ServiceAnnonce.GetAll();
+            var YourRadioButt = Request.Form["type"];
+            string aa = YourRadioButt;
+            if(aa=="A")
+                {
+                if (!String.IsNullOrEmpty(filtre) && String.IsNullOrEmpty(min) && String.IsNullOrEmpty(max))
+                {
+                    list = list.Where(m => m.address.Contains(filtre) && m.TypeAn.ToString() == "Vente").ToList();
+                }
+                if (!String.IsNullOrEmpty(filtre) && !String.IsNullOrEmpty(min) && String.IsNullOrEmpty(max))
+                {
+                    var con = Convert.ToInt32(min);
+                    list = list.Where(m => m.address.Contains(filtre)&& m.price >= con&& m.TypeAn.ToString() == "Vente").ToList();
+                }
+                if (!String.IsNullOrEmpty(filtre) && String.IsNullOrEmpty(min) && !String.IsNullOrEmpty(max))
+                {
+                    var con2 = Convert.ToInt32(max);
+                    list = list.Where(m => m.address.Contains(filtre) && m.TypeAn.ToString() == "Vente" && m.price <= con2).ToList();
+                }
+                if (String.IsNullOrEmpty(filtre) && !String.IsNullOrEmpty(min) && !String.IsNullOrEmpty(max))
+                {
+                    var con = Convert.ToInt32(min); var con2 = Convert.ToInt32(max);
+                    list = list.Where(m => m.price >= con && m.price <= con2 && m.TypeAn.ToString() == "Vente").ToList();
+                }
+                if (!String.IsNullOrEmpty(filtre) && !String.IsNullOrEmpty(min) && !String.IsNullOrEmpty(max))
+                {
+                    var con = Convert.ToInt32(min); var con2 = Convert.ToInt32(max);
+                    list = list.Where(m => m.price >= con && m.price <= con2 && m.TypeAn.ToString() == "Vente"&& m.address.Contains(filtre)).ToList();
+                }
+                if (String.IsNullOrEmpty(filtre) && !String.IsNullOrEmpty(min) && String.IsNullOrEmpty(max))
+                {
+                    var con = Convert.ToInt32(min);
+                    list = list.Where(m =>  m.price >= con && m.TypeAn.ToString() == "Vente").ToList();
+                }
+                if (String.IsNullOrEmpty(filtre) && String.IsNullOrEmpty(min) && !String.IsNullOrEmpty(max))
+                {
+                    var con2 = Convert.ToInt32(max);
+                    list = list.Where(m =>  m.TypeAn.ToString() == "Vente" && m.price <= con2).ToList();
+                }
+                if (String.IsNullOrEmpty(filtre) && String.IsNullOrEmpty(min) && String.IsNullOrEmpty(max))
+                {
+                    
+                    list = list.Where(m => m.TypeAn.ToString() == "Vente" ).ToList();
+                }
+            }
+            if (aa == "B")
+            {
+                if (!String.IsNullOrEmpty(filtre) && String.IsNullOrEmpty(min) && String.IsNullOrEmpty(max))
+                {
+                    list = list.Where(m => m.address.Contains(filtre) && m.TypeAn.ToString() == "Location").ToList();
+                }
+                if (!String.IsNullOrEmpty(filtre) && !String.IsNullOrEmpty(min) && String.IsNullOrEmpty(max))
+                {
+                    var con = Convert.ToInt32(min);
+                    list = list.Where(m => m.address.Contains(filtre) && m.price >= con && m.TypeAn.ToString() == "Location").ToList();
+                }
+                if (!String.IsNullOrEmpty(filtre) && String.IsNullOrEmpty(min) && !String.IsNullOrEmpty(max))
+                {
+                    var con2 = Convert.ToInt32(max);
+                    list = list.Where(m => m.address.Contains(filtre) && m.TypeAn.ToString() == "Location" && m.price <= con2).ToList();
+                }
+                if (String.IsNullOrEmpty(filtre) && !String.IsNullOrEmpty(min) && !String.IsNullOrEmpty(max))
+                {
+                    var con = Convert.ToInt32(min); var con2 = Convert.ToInt32(max);
+                    list = list.Where(m => m.price >= con && m.price <= con2 && m.TypeAn.ToString() == "Location").ToList();
+                }
+                if (!String.IsNullOrEmpty(filtre) && !String.IsNullOrEmpty(min) && !String.IsNullOrEmpty(max))
+                {
+                    var con = Convert.ToInt32(min); var con2 = Convert.ToInt32(max);
+                    list = list.Where(m => m.price >= con && m.price <= con2 && m.TypeAn.ToString() == "Location" && m.address.Contains(filtre)).ToList();
+                }
+                if (String.IsNullOrEmpty(filtre) && !String.IsNullOrEmpty(min) && String.IsNullOrEmpty(max))
+                {
+                    var con = Convert.ToInt32(min);
+                    list = list.Where(m => m.price >= con && m.TypeAn.ToString() == "Location").ToList();
+                }
+                if (String.IsNullOrEmpty(filtre) && String.IsNullOrEmpty(min) && !String.IsNullOrEmpty(max))
+                {
+                    var con2 = Convert.ToInt32(max);
+                    list = list.Where(m => m.TypeAn.ToString() == "Location" && m.price <= con2).ToList();
+                }
+                if (String.IsNullOrEmpty(filtre) && String.IsNullOrEmpty(min) && String.IsNullOrEmpty(max))
+                {
+
+                    list = list.Where(m => m.TypeAn.ToString() == "Location").ToList();
+                }
+            }
+            if (aa == "C")
+            {
+                if (!String.IsNullOrEmpty(filtre) && String.IsNullOrEmpty(min) && String.IsNullOrEmpty(max))
+                {
+                    list = list.Where(m => m.address.Contains(filtre) ).ToList();
+                }
+                if (!String.IsNullOrEmpty(filtre) && !String.IsNullOrEmpty(min) && String.IsNullOrEmpty(max))
+                {
+                    var con = Convert.ToInt32(min);
+                    list = list.Where(m => m.address.Contains(filtre) && m.price >= con ).ToList();
+                }
+                if (!String.IsNullOrEmpty(filtre) && String.IsNullOrEmpty(min) && !String.IsNullOrEmpty(max))
+                {
+                    var con2 = Convert.ToInt32(max);
+                    list = list.Where(m => m.address.Contains(filtre)  && m.price <= con2).ToList();
+                }
+                if (String.IsNullOrEmpty(filtre) && !String.IsNullOrEmpty(min) && !String.IsNullOrEmpty(max))
+                {
+                    var con = Convert.ToInt32(min); var con2 = Convert.ToInt32(max);
+                    list = list.Where(m => m.price >= con && m.price <= con2 ).ToList();
+                }
+                if (!String.IsNullOrEmpty(filtre) && !String.IsNullOrEmpty(min) && !String.IsNullOrEmpty(max))
+                {
+                    var con = Convert.ToInt32(min); var con2 = Convert.ToInt32(max);
+                    list = list.Where(m => m.price >= con && m.price <= con2  && m.address.Contains(filtre)).ToList();
+                }
+                if (String.IsNullOrEmpty(filtre) && !String.IsNullOrEmpty(min) && String.IsNullOrEmpty(max))
+                {
+                    var con = Convert.ToInt32(min);
+                    list = list.Where(m => m.price >= con ).ToList();
+                }
+                if (String.IsNullOrEmpty(filtre) && String.IsNullOrEmpty(min) && !String.IsNullOrEmpty(max))
+                {
+                    var con2 = Convert.ToInt32(max);
+                    list = list.Where(m =>  m.price <= con2).ToList();
+                }
+                if (String.IsNullOrEmpty(filtre) && String.IsNullOrEmpty(min) && String.IsNullOrEmpty(max))
+                {
+
+                    
+                }
+            }
+
+
+
+            return View(list);
+
+
+
         }
 
         // GET: Annoce/Details/5
@@ -64,18 +199,17 @@ namespace Dari.Web.Controllers
         // POST: Annoce/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(Annonce p, HttpPostedFileBase file)
+        public ActionResult Create(Annonce p , HttpPostedFileBase file)
         {
 
-            // TODO: Add insert logic here
             p.images = file.FileName;
             ServiceAnnonce.Add(p);
             ServiceAnnonce.Commit();
-            if (file.ContentLength > 0)
+           /* if (file.ContentLength > 0)
             {
                 var path = Path.Combine(Server.MapPath("~/Content/upload/"), file.FileName);
                 file.SaveAs(path);
-            }
+            }*/
             return RedirectToAction("Index");
 
 

@@ -338,7 +338,9 @@
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -374,11 +376,10 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Shared\_CustomIndex.cshtml" />
     <Content Include="Views\Client\Create.cshtml" />
-    <Content Include="Views\Annoce\Index.cshtml" />
     <Content Include="Views\Annoce\Edit.cshtml" />
     <Content Include="Views\Annoce\Delete.cshtml" />
-    <Content Include="Views\Annoce\Create1.cshtml" />
     <Content Include="Views\Annoce\Create.cshtml" />
+    <Content Include="Views\Annoce\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
